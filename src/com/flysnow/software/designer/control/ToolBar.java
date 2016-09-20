@@ -7,4 +7,15 @@ package com.flysnow.software.designer.control;
  * 类 描 述: 工具栏.
  */
 public class ToolBar extends BaseBar {
+    /**
+     * 初始化成员
+     *
+     * @param x X轴
+     * @param y Y轴
+     * @param w 宽度
+     * @param h 高度
+     */
+    public ToolBar(float x, float y, float w, float h) {
+        super(x, y, w, h);
+    }
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.flysnow.software.designer.control.*;
 import com.flysnow.software.designer.manager.MainDesigner;
 
 /**
@@ -14,10 +15,16 @@ import com.flysnow.software.designer.manager.MainDesigner;
  */
 public class Designer implements Screen {
 
-    /*管理程序的主类*/
-    private MainDesigner designer;
     /*承载控件的舞台*/
     private Stage stage;
+    /*菜单栏*/
+    private MenuBar menuBar;
+    /*工具栏*/
+    private ToolBar toolBar;
+    /*左边栏*/
+    private LeftBar leftBar;
+    /*右边栏*/
+    private RightBar rightBar;
 
     /**
      * 构造方法
@@ -25,7 +32,6 @@ public class Designer implements Screen {
      * @param designer 继承自Game的类的实例
      */
     public Designer(MainDesigner designer) {
-        this.designer = designer;
         this.stage = designer.getStage();
     }
 
@@ -34,7 +40,21 @@ public class Designer implements Screen {
      */
     @Override
     public void show() {
+        this.initBars();
+    }
 
+    /**
+     * 初始化菜单栏,工具栏等
+     */
+    private void initBars() {
+        this.menuBar = new MenuBar(0, this.stage.getHeight() - 40, this.stage.getWidth(), 40);
+        this.toolBar = new ToolBar(0, this.stage.getHeight() - (1 + this.menuBar.getHeight() + this.menuBar.getHeight()), this.stage.getWidth(), 40);
+        this.leftBar = new LeftBar(0, 0, 60, this.stage.getHeight() - (2 + this.menuBar.getHeight() + this.toolBar.getHeight()));
+        this.rightBar = new RightBar(this.stage.getWidth() - 60, 0, 60, this.stage.getHeight() - (2 + this.menuBar.getHeight() + this.toolBar.getHeight()));
+        this.stage.addActor(this.menuBar);
+        this.stage.addActor(this.toolBar);
+        this.stage.addActor(this.leftBar);
+        this.stage.addActor(this.rightBar);
     }
 
     /**
@@ -44,8 +64,10 @@ public class Designer implements Screen {
      */
     @Override
     public void render(float v) {
-        Gdx.gl20.glClearColor(0,0,0,0);
+        Gdx.gl20.glClearColor(0, 0, 0, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        stage.act(Gdx.graphics.getDeltaTime());
+        stage.draw();
     }
 
     /**
