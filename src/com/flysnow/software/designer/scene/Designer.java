@@ -44,8 +44,8 @@ public class Designer implements Screen {
      */
     @Override
     public void render(float v) {
-        Gdx.gl30.glClearColor(0,0,0,0);
-        Gdx.gl30.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl20.glClearColor(0,0,0,0);
+        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
     /**

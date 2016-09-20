@@ -18,7 +18,7 @@ public class Main {
         cfg.x = 0;
         cfg.y = 0;
         cfg.vSyncEnabled = false;
-        cfg.title = "GDX Designer v0.0.1 -- By Var_雨中行";
+        cfg.title = "GDX Designer v0.0.1 -- By FlySnow Team";
         new LwjglApplication(new MainDesigner(), cfg);
     }
 }
